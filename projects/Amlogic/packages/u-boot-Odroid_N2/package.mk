@@ -16,10 +16,6 @@ configure_package() {
   PKG_UBOOT_CONFIG="odroidn2_defconfig"
 }
 
-pre_configure_target() {
-  cp -r $(get_build_dir u-boot_firmware)/* $PKG_BUILD
-}
-
 make_target() {
   [ "${BUILD_WITH_DEBUG}" = "yes" ] && PKG_DEBUG=1 || PKG_DEBUG=0
   export PATH=$TOOLCHAIN/lib/gcc-linaro-aarch64-elf/bin/:$TOOLCHAIN/lib/gcc-linaro-arm-eabi/bin/:$PATH
