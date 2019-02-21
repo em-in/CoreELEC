@@ -46,7 +46,7 @@
     KERNEL_TARGET="Image.lzo"
 
   # Kernel extra targets to build
-    KERNEL_UBOOT_EXTRA_TARGET="gxl_p212_1g.dtb gxl_p212_2g.dtb gxl_p230_2g.dtb gxm_q200_2g.dtb gxm_q201_1g.dtb gxm_q201_2g.dtb meson64_odroidn2.dtb"
+    KERNEL_UBOOT_EXTRA_TARGET="gxl_p212_1g.dtb gxl_p212_2g.dtb gxl_p230_2g.dtb gxm_q200_2g.dtb gxm_q201_1g.dtb gxm_q201_2g.dtb g12b_a311d_4g_odroid_n2.dtb"
 
   # Build Android kernel image using mkbootimg
     BUILD_ANDROID_BOOTIMG="yes"
