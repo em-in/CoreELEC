@@ -52,7 +52,7 @@ case $display_mode in
 esac
 
 fbset -fb /dev/fb0 -g $X $Y 1920 2160 32
-fbset -fb /dev/fb1 -g 32 32 32 32 32
+fbset -fb /dev/fb1 -g $X $Y 1920 2160 32
 echo 0 > /sys/class/graphics/fb0/free_scale
 echo 0 > /sys/class/graphics/fb1/free_scale
 echo 1 > /sys/class/video/disable_video
