@@ -14,6 +14,27 @@ PKG_LONGDESC="OpenGL ES pre-compiled libraries for Mali GPUs found in Amlogic Me
 PKG_TOOLCHAIN="manual"
 
 makeinstall_target() {
+
+ mkdir -p $SYSROOT_PREFIX/usr/include
+   cp -PR include/* $SYSROOT_PREFIX/usr/include
+   mv $SYSROOT_PREFIX/usr/include/EGL_platform/platform_fbdev/* $SYSROOT_PREFIX/usr/include/EGL/
+
+ mkdir -p $SYSROOT_PREFIX/usr/lib
+   cp -PR lib/eabihf/m450/r5p0/libMali.so $SYSROOT_PREFIX/usr/lib
+
+   ln -sf libMali.so $SYSROOT_PREFIX/usr/lib/libEGL.so.1.4
+   ln -sf libEGL.so.1.4 $SYSROOT_PREFIX/usr/lib/libEGL.so.1
+   ln -sf libEGL.so.1 $SYSROOT_PREFIX/usr/lib/libEGL.so
+
+   ln -sf libMali.so $SYSROOT_PREFIX/usr/lib/libGLESv1_CM.so.1.1
+   ln -sf libGLESv1_CM.so.1.1 $SYSROOT_PREFIX/usr/lib/libGLESv1_CM.so.1
+   ln -sf libGLESv1_CM.so.1 $SYSROOT_PREFIX/usr/lib/libGLESv1_CM.so
+
+   ln -sf libMali.so $SYSROOT_PREFIX/usr/lib/libGLESv2.so.2.0
+   ln -sf libGLESv2.so.2.0 $SYSROOT_PREFIX/usr/lib/libGLESv2.so.2
+   ln -sf libGLESv2.so.2 $SYSROOT_PREFIX/usr/lib/libGLESv2.so
+
+
   mkdir -p $INSTALL/usr/lib/m450/
   mkdir -p $INSTALL/usr/lib/gondul/
     cp -PR lib/eabihf/m450/r5p0/libMali.so $INSTALL/usr/lib/m450/
