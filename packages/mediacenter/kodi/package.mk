@@ -25,8 +25,8 @@ case $KODI_VENDOR in
     PKG_SOURCE_NAME="kodi-$KODI_VENDOR-$PKG_VERSION.tar.gz"
     ;;
   amlogic)
-    PKG_VERSION="5350127f8ef30edaa025b65a7a261df27ecf851c"
-    PKG_SHA256="d43bac957dea0a14b2887907134c3d60dd88dfe24a02807d0d566a993b4cb597"
+    PKG_VERSION="ced8b353ed829545a8110bdfd086fedb530237d3"
+    PKG_SHA256="2efd7b1733c761504595173d96a6d13a94a9999884d4819f40e5f51d44a56142"
     PKG_URL="https://github.com/CoreELEC/xbmc/archive/$PKG_VERSION.tar.gz"
     PKG_SOURCE_NAME="kodi-$PKG_VERSION.tar.gz"
     ;;
