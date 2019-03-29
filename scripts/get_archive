@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
+echo "********* $0 $* **********"
 
 _get_file_already_downloaded() {
   [ ! -f "${PACKAGE}" -o ! -f "${STAMP_URL}" -o ! -f "${STAMP_SHA}" ] && return 1

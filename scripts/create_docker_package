@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "********* $0 $* **********"
 FIRST_LABEL=30002
 
 LABEL_DEVICE="D"
