@@ -16,7 +16,7 @@ save_build_config
 set >000_set
 env >000_env
 
-#exit
+exit
 setup_toolchain target
 
 set >001_set
