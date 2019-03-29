@@ -4,6 +4,7 @@
 # Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 # Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+echo "********* $0 $* **********"
 
 unset _CACHE_PACKAGE_LOCAL _CACHE_PACKAGE_GLOBAL _DEBUG_DEPENDS_LIST _DEBUG_PACKAGE_LIST
 
@@ -12,12 +13,29 @@ unset _CACHE_PACKAGE_LOCAL _CACHE_PACKAGE_GLOBAL _DEBUG_DEPENDS_LIST _DEBUG_PACK
 
 show_config
 save_build_config
+set >000_set
+env >000_env
 
+#exit
 setup_toolchain target
 
+set >001_set
+env >001_env
+echo "########################################################################################################"
+
 $SCRIPTS/checkdeps
+echo "########################################################################################################"
+#exit
 $SCRIPTS/build toolchain
+set >002_set
+env >002_env
+echo "########################################################################################################"
+#exit
 $SCRIPTS/build squashfs:host
+set >003_set
+env >003_env
+echo "########################################################################################################"
+#exit
 $SCRIPTS/build dosfstools:host
 $SCRIPTS/build fakeroot:host
 $SCRIPTS/build kmod:host
@@ -136,8 +154,17 @@ echo "$DISTRONAME ($LIBREELEC_BUILD): $LIBREELEC_VERSION ($LIBREELEC_ARCH)" >> $
 
 ln -sf /etc/issue $INSTALL/etc/motd
 
+set >004_set
+env >004_env
+echo "########################################################################################################"
+#exit
+
 # populate base system...
 $SCRIPTS/install libc
+set >005_set
+env >005_env
+echo "########################################################################################################"
+#exit
 $SCRIPTS/install gcc
 
 $SCRIPTS/install linux
@@ -151,6 +178,10 @@ $SCRIPTS/install util-linux
 $SCRIPTS/install corefonts
 $SCRIPTS/install network
 
+set >100_set
+env >100_env
+echo "########################################################################################################"
+exit
 # Graphic support
 [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
 
@@ -172,29 +203,61 @@ $SCRIPTS/install network
 # Remote support
 [ "$REMOTE_SUPPORT" = "yes" ] && $SCRIPTS/install remote
 
+set >200_set
+env >200_env
+echo "########################################################################################################"
+#exit
 # Entware support
 if [ "$ENTWARE_SUPPORT" = "yes" ]; then
   ln -sf /storage/.opt $INSTALL/opt
   $SCRIPTS/install entware
 fi
+set >210_set
+env >210_env
+echo "########################################################################################################"
+#exit
 
 # Install miscellaneous packages
 $SCRIPTS/install misc-packages
+set >211_set
+env >211_env
+echo "########################################################################################################"
+#exit
 
 # Virtual image creation support
 [ "$PROJECT" = "Generic" ] && $SCRIPTS/install virtual
+set >212_set
+env >212_env
+echo "########################################################################################################"
+#exit
 
 # Installer support
 [ "$INSTALLER_SUPPORT" = "yes" ] && $SCRIPTS/install installer
+set >213_set
+env >213_env
+echo "########################################################################################################"
+#exit
 
 # Devtools... (not for Release)
 [ "$TESTING" = "yes" ] && $SCRIPTS/install testing
+set >214_set
+env >214_env
+echo "########################################################################################################"
+#exit
 
 # Install gdb in all builds, including releases
 $SCRIPTS/install debug
+set >215_set
+env >215_env
+echo "########################################################################################################"
+#exit
 
 # OEM packages
 [ "$OEM_SUPPORT" = "yes" ] && $SCRIPTS/install oem
+set >220_set
+env >220_env
+echo "########################################################################################################"
+#exit
 
 # copy PROJECT related files to filesystem
 if [ -d "$PROJECT_DIR/$PROJECT/filesystem" ]; then
@@ -254,6 +317,10 @@ if [ -z "$SQUASHFS_COMPRESSION_OPTION" ]; then
     SQUASHFS_COMPRESSION_OPTION="-Xcompression-level 22 -b 262144"
   fi
 fi
+set >390_set
+env >390_env
+echo "########################################################################################################"
+#exit
 
 # create squashfs file, default to gzip if no compression configured
 echo "rm -rf \"$TARGET_IMG/$IMAGE_NAME.system\"" >> $FAKEROOT_SCRIPT
@@ -589,3 +656,29 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
     rm -rf $RELEASE_DIR
   fi
 fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
