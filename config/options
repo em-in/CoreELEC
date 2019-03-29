@@ -1,4 +1,5 @@
 # Do not build as root. Ever.
+echo "*** $0 $* ***"
 if [[ "${EUID}" -eq 0 ]]; then
   echo "Building as the root user is NOT supported. Use a regular user account for the build." 1>&2
   exit 1
@@ -106,3 +107,6 @@ init_package_cache
 
 # set package metadata
 source_package "${1}"
+
+env >000_options_env
+set >000_options_set
