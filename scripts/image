@@ -161,62 +161,20 @@ echo "$DISTRONAME ($LIBREELEC_BUILD): $LIBREELEC_VERSION ($LIBREELEC_ARCH)" >> $
 
 ln -sf /etc/issue $INSTALL/etc/motd
 
-set >004_set
-env >004_env
-echo "########################################################################################################"
-#exit
-
 # populate base system...
 $SCRIPTS/install libc
-set >005_set
-env >005_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install gcc
-
 $SCRIPTS/install linux
 export _CACHED_KERNEL_MODULE_DIR="$(get_module_dir)"
-set >006_set
-env >006_env
-echo "########################################################################################################"
-#exit
 
 $SCRIPTS/install linux-drivers
-set >007_set
-env >007_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install linux-firmware
-set >008_set
-env >008_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install $BOOTLOADER
-set >009_set
-env >009_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install busybox
-set >010_set
-env >010_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install util-linux
-set >011_set
-env >011_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install corefonts
-set >012_set
-env >012_env
-echo "########################################################################################################"
-#exit
 $SCRIPTS/install network
 
-set >100_set
-env >100_env
-echo "########################################################################################################"
-#exit
 # Graphic support
 [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
 
@@ -238,61 +196,29 @@ echo "##########################################################################
 # Remote support
 [ "$REMOTE_SUPPORT" = "yes" ] && $SCRIPTS/install remote
 
-set >200_set
-env >200_env
-echo "########################################################################################################"
-#exit
 # Entware support
 if [ "$ENTWARE_SUPPORT" = "yes" ]; then
   ln -sf /storage/.opt $INSTALL/opt
   $SCRIPTS/install entware
 fi
-set >210_set
-env >210_env
-echo "########################################################################################################"
-#exit
 
 # Install miscellaneous packages
 $SCRIPTS/install misc-packages
-set >211_set
-env >211_env
-echo "########################################################################################################"
-#exit
 
 # Virtual image creation support
 [ "$PROJECT" = "Generic" ] && $SCRIPTS/install virtual
-set >212_set
-env >212_env
-echo "########################################################################################################"
-#exit
 
 # Installer support
 [ "$INSTALLER_SUPPORT" = "yes" ] && $SCRIPTS/install installer
-set >213_set
-env >213_env
-echo "########################################################################################################"
-#exit
 
 # Devtools... (not for Release)
 [ "$TESTING" = "yes" ] && $SCRIPTS/install testing
-set >214_set
-env >214_env
-echo "########################################################################################################"
-#exit
 
 # Install gdb in all builds, including releases
 $SCRIPTS/install debug
-set >215_set
-env >215_env
-echo "########################################################################################################"
-#exit
 
 # OEM packages
 [ "$OEM_SUPPORT" = "yes" ] && $SCRIPTS/install oem
-set >220_set
-env >220_env
-echo "########################################################################################################"
-#exit
 
 # copy PROJECT related files to filesystem
 if [ -d "$PROJECT_DIR/$PROJECT/filesystem" ]; then
