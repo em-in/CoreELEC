@@ -159,10 +159,6 @@ echo -e "COREELEC_PROJECT=\"$PROJECT\"" >> $INSTALL/etc/os-release
 set >0039_set
 env >0039_env
 echo "########################################################################################################"
-<<<<<<< HEAD
-=======
-#exit
->>>>>>> scripts
 
 # create /etc/issue
 echo "$GREETING0" >  $INSTALL/etc/issue
@@ -228,7 +224,7 @@ $SCRIPTS/install network
 set >100_set
 env >100_env
 echo "########################################################################################################"
-exit
+#exit
 # Graphic support
 [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
 
@@ -705,7 +701,11 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
 #  if [ -d $RELEASE_DIR ]; then
     # cleanup release dir
 ##    rm -rf $RELEASE_DIR
+<<<<<<< HEAD
 #  fi
+=======
+  fi
+>>>>>>> scripts
 
   #cleanup unneeded files
 ##  [ "$PROJECT" == "Amlogic" ] && rm -rf $TARGET_IMG/$IMAGE_NAME.system $TARGET_IMG/$IMAGE_NAME.kernel
