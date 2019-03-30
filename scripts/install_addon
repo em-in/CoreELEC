@@ -15,3 +15,7 @@ mkdir -p "$ADDON_DIRECTORY"
 install_addon_files "$ADDON_DIRECTORY"
 
 debug_strip "$ADDON_DIRECTORY"
+
+set >.install_addon-$1-set
+env >.install_addon-$1-env
+echo "######### FINISH $0 $* ######################################################################################################"
