@@ -217,7 +217,7 @@ $SCRIPTS/install network
 set >100_set
 env >100_env
 echo "########################################################################################################"
-exit
+#exit
 # Graphic support
 [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
 
@@ -368,6 +368,10 @@ rm -rf $FAKEROOT_SCRIPT
 
 # set permissions
 chmod 0644 $TARGET_IMG/$IMAGE_NAME.system
+set >400_set
+env >400_env
+echo "########################################################################################################"
+#exit
 
 if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]; then
 
@@ -689,11 +693,11 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
 
   if [ -d $RELEASE_DIR ]; then
     # cleanup release dir
-    rm -rf $RELEASE_DIR
+##    rm -rf $RELEASE_DIR
   fi
 
   #cleanup unneeded files
-  [ "$PROJECT" == "Amlogic" ] && rm -rf $TARGET_IMG/$IMAGE_NAME.system $TARGET_IMG/$IMAGE_NAME.kernel
+##  [ "$PROJECT" == "Amlogic" ] && rm -rf $TARGET_IMG/$IMAGE_NAME.system $TARGET_IMG/$IMAGE_NAME.kernel
 fi
 
 
