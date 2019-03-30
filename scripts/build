@@ -4,7 +4,11 @@
 # Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 # Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
-echo "********* $0 $* **********"
+echo "********************************************************************"
+echo "*********"
+echo "********* $0 $*"
+echo "*********"
+echo "********************************************************************"
 
 . config/options "$1"
 
@@ -460,3 +464,5 @@ done
 if [ "$1" = "u-boot" ]; then
   echo "STAMP_UBOOT_SYSTEM=\"${UBOOT_SYSTEM}\"" >> $STAMP
 fi
+
+echo "********* FINISH $0 $* ******************************************************************************************************"
