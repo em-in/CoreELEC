@@ -2,7 +2,11 @@
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
-echo "********* $0 $* **********"
+echo "********************************************************************"
+echo "*********"
+echo "********* $0 $*"
+echo "*********"
+echo "********************************************************************"
 
 . config/options ""
 
@@ -364,3 +368,5 @@ if [ "$UNPACK_ONLY" != "yes" ]; then
   echo "building packages: $package_list"
   build_package_list
 fi
+
+echo "********* FINISH $0 $* ******************************************************************************************************"
