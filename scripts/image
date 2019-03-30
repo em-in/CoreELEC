@@ -45,7 +45,6 @@ set >003_set
 env >003_env
 echo "########################################################################################################"
 #exit
-
 $SCRIPTS/build dosfstools:host
 $SCRIPTS/build fakeroot:host
 $SCRIPTS/build kmod:host
