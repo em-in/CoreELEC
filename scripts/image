@@ -45,6 +45,7 @@ set >003_set
 env >003_env
 echo "########################################################################################################"
 #exit
+
 $SCRIPTS/build dosfstools:host
 $SCRIPTS/build fakeroot:host
 $SCRIPTS/build kmod:host
@@ -53,7 +54,6 @@ $SCRIPTS/build populatefs:host
 set >003_set
 env >003_env
 echo "########################################################################################################"
-
 
 if [ -n "$CUSTOM_GIT_HASH" ]; then
   GIT_HASH="$CUSTOM_GIT_HASH"
@@ -159,6 +159,10 @@ echo -e "COREELEC_PROJECT=\"$PROJECT\"" >> $INSTALL/etc/os-release
 set >0039_set
 env >0039_env
 echo "########################################################################################################"
+<<<<<<< HEAD
+=======
+#exit
+>>>>>>> scripts
 
 # create /etc/issue
 echo "$GREETING0" >  $INSTALL/etc/issue
@@ -173,7 +177,7 @@ ln -sf /etc/issue $INSTALL/etc/motd
 set >004_set
 env >004_env
 echo "########################################################################################################"
-#exit
+exit
 
 # populate base system...
 $SCRIPTS/install libc
