@@ -30,21 +30,21 @@ env >0011_env
 echo "########################################################################################################"
 #exit
 
-#$SCRIPTS/build toolchain
-#set >002_set
-#env >002_env
-#echo "########################################################################################################"
-#exit
-#$SCRIPTS/build squashfs:host
-#$SCRIPTS/build dosfstools:host
-#$SCRIPTS/build fakeroot:host
-#$SCRIPTS/build kmod:host
-#$SCRIPTS/build mtools:host
-#$SCRIPTS/build populatefs:host
-#set >003_set
-#env >003_env
-#echo "########################################################################################################"
-#exit
+$SCRIPTS/build toolchain
+set >002_set
+env >002_env
+echo "########################################################################################################"
+
+$SCRIPTS/build squashfs:host
+$SCRIPTS/build dosfstools:host
+$SCRIPTS/build fakeroot:host
+$SCRIPTS/build kmod:host
+$SCRIPTS/build mtools:host
+$SCRIPTS/build populatefs:host
+set >003_set
+env >003_env
+echo "########################################################################################################"
+
 
 if [ -n "$CUSTOM_GIT_HASH" ]; then
   GIT_HASH="$CUSTOM_GIT_HASH"
@@ -150,7 +150,6 @@ echo -e "COREELEC_PROJECT=\"$PROJECT\"" >> $INSTALL/etc/os-release
 set >0039_set
 env >0039_env
 echo "########################################################################################################"
-#exit
 
 # create /etc/issue
 echo "$GREETING0" >  $INSTALL/etc/issue
@@ -217,7 +216,7 @@ $SCRIPTS/install network
 set >100_set
 env >100_env
 echo "########################################################################################################"
-exit
+#exit
 # Graphic support
 [ ! "$DISPLAYSERVER" = "no" ] && $SCRIPTS/install $DISPLAYSERVER
 
@@ -368,6 +367,10 @@ rm -rf $FAKEROOT_SCRIPT
 
 # set permissions
 chmod 0644 $TARGET_IMG/$IMAGE_NAME.system
+set >400_set
+env >400_env
+echo "########################################################################################################"
+#exit
 
 if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]; then
 
@@ -687,11 +690,13 @@ if [ "$1" = "release" -o "$1" = "mkimage" -o "$1" = "amlpkg" -o "$1" = "noobs" ]
     )
   fi
 
-  if [ -d $RELEASE_DIR ]; then
+#  if [ -d $RELEASE_DIR ]; then
     # cleanup release dir
-    rm -rf $RELEASE_DIR
-  fi
-fi
+##    rm -rf $RELEASE_DIR
+#  fi
+
+  #cleanup unneeded files
+##  [ "$PROJECT" == "Amlogic" ] && rm -rf $TARGET_IMG/$IMAGE_NAME.system $TARGET_IMG/$IMAGE_NAME.kernel
 
 
 
