@@ -29,21 +29,27 @@ set >0011_set
 env >0011_env
 echo "########################################################################################################"
 #exit
-$SCRIPTS/build toolchain
-set >002_set
-env >002_env
-echo "########################################################################################################"
-exit
+
+#$SCRIPTS/build toolchain
+#set >002_set
+#env >002_env
+#echo "########################################################################################################"
+#exit
 $SCRIPTS/build squashfs:host
 set >003_set
 env >003_env
 echo "########################################################################################################"
 #exit
+
 $SCRIPTS/build dosfstools:host
 $SCRIPTS/build fakeroot:host
 $SCRIPTS/build kmod:host
 $SCRIPTS/build mtools:host
 $SCRIPTS/build populatefs:host
+set >003_set
+env >003_env
+echo "########################################################################################################"
+#exit
 
 if [ -n "$CUSTOM_GIT_HASH" ]; then
   GIT_HASH="$CUSTOM_GIT_HASH"
@@ -146,6 +152,10 @@ echo -e "COREELEC_PROJECT=\"$PROJECT\"" >> $INSTALL/etc/os-release
 [ -n "$DEVICE" ] && echo -e "COREELEC_DEVICE=\"$DEVICE\"" >> $INSTALL/etc/os-release
 [ -n "$BUILDER_NAME" ] && echo -e "BUILDER_NAME=\"$BUILDER_NAME\"" >> $INSTALL/etc/os-release
 [ -n "$BUILDER_VERSION" ] && echo -e "BUILDER_VERSION=\"$BUILDER_VERSION\"" >> $INSTALL/etc/os-release
+set >0039_set
+env >0039_env
+echo "########################################################################################################"
+#exit
 
 # create /etc/issue
 echo "$GREETING0" >  $INSTALL/etc/issue
@@ -160,7 +170,7 @@ ln -sf /etc/issue $INSTALL/etc/motd
 set >004_set
 env >004_env
 echo "########################################################################################################"
-#exit
+exit
 
 # populate base system...
 $SCRIPTS/install libc
