@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
 
 PKG_NAME="dtc"
-PKG_VERSION="1.4.5"
-PKG_SHA256="cfb9394690ebec1e4f942ee0c3b863b660eb0c4ef85bab19429f30c3469a3415"
+PKG_VERSION="1.4.7"
+PKG_SHA256="f999e4a0238aeda1cbb452528670f7f37e7789e85f9b061f2cfff425a283ef1f"
 PKG_LICENSE="GPL"
 PKG_SITE="https://git.kernel.org/pub/scm/utils/dtc/dtc.git/"
 PKG_URL="https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/$PKG_VERSION.tar.gz"
